@@ -7,14 +7,25 @@ import { WeatherServiceService as WeatherService } from '../weather-service.serv
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
-  weather
+  weather;
 
   constructor(
     private weatherService: WeatherService
   ) { }
 
   ngOnInit() {
-    this.weather = this.weatherService.getCurrentDayWeather()
+    // this.weather = this.weatherService.getCurrentDayWeather();
+    this.getWeatherData();
   }
 
+  getWeatherData() {
+    this.weatherService.getCurrentDayWeather().subscribe(data => {
+      console.log(data);
+      this.weather = data;
+    });
+  }
+
+  convertToFarenheit(tempKelvin) {
+    return Math.round(tempKelvin * (9 / 5) - 459.67);
+  }
 }

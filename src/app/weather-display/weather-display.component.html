@@ -1,5 +1,13 @@
-<p>weather-display works!</p>
+<h1>Today's Weather Forecast</h1>
 
-<div class="weather-item" *ngIf="weather | async">
-    <span>{{ weather }}</span>
+<div class="weather-item" *ngIf="weather">
+  <span>Location: {{ weather.name }}</span>
+</div>
+
+<div class="weather-item" *ngIf="weather">
+    <span>Weather Description: {{ weather.weather[0].description }}</span>
+</div>
+
+<div class="weather-item" *ngIf="weather">
+  <span>Temperature: {{ convertToFarenheit(weather.main.temp) }} &#8457;</span>
 </div>
