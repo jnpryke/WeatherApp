@@ -15,16 +15,8 @@ export class WeatherDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.weather = this.weatherService.getCurrentDayWeather();
     this.getWeatherData();
   }
-
-  // getWeatherData() {
-  //   this.weatherService.getCurrentDayWeather().subscribe(data => {
-  //     console.log(data);
-  //     this.weather = data;
-  //   });
-  // }
 
   getWeatherData() {
     this.weatherService.getCurrentDayWeather().then(data => {

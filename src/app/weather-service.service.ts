@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,29 +11,23 @@ export class WeatherServiceService {
   ) { }
 
   async getCurrentDayWeather() {
-    // const lat = await navigator.geolocation.getCurrentPosition(this.callBack);
-
-    const stuff = await this.getCurrentPosition();
-    // const { latitude, longitude } = coords;
-    console.log(stuff.coords.latitude + ' ' + stuff.coords.longitude);
-
-    // console.log('lat from function ' + lat);
+    const location = await this.getCurrentPosition();
 
     const response = await this.http.get(
-      'https://api.openweathermap.org/data/2.5/weather?lat=' + stuff.coords.latitude + '&lon=' + stuff.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
+      'https://api.openweathermap.org/data/2.5/weather?lat=' + location.coords.latitude +
+      '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
       .toPromise();
 
     return response;
   }
 
-  getFiveDayForecast(): Observable<any> {
-    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=London,uk&APPID=b7c221fb8a2b47d36d40adcbcdbb671a');
-  }
+  async getFiveDayForecast() {
+    const location = await this.getCurrentPosition();
 
-  async callBack(e) {
-    // console.log(e.latitude + ' ' + e.longitude)
-    console.log(e.coords.latitude + ' ' + e.coords.longitude)
-    return e.coords.latitude;
+    return this.http.get(
+      'https://api.openweathermap.org/data/2.5/forecast?lat=' + location.coords.latitude +
+      '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
+      .toPromise();
   }
 
   getCurrentPosition(options = {}): Promise<any> {
@@ -42,5 +35,4 @@ export class WeatherServiceService {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   }
-
 }
