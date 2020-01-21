@@ -13,18 +13,16 @@ export class WeatherServiceService {
   async getCurrentDayWeather() {
     const location = await this.getCurrentPosition();
 
-    const response = await this.http.get(
+    return await this.http.get(
       'https://api.openweathermap.org/data/2.5/weather?lat=' + location.coords.latitude +
       '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
       .toPromise();
-
-    return response;
   }
 
   async getFiveDayForecast() {
     const location = await this.getCurrentPosition();
 
-    return this.http.get(
+    return await this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + location.coords.latitude +
       '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
       .toPromise();
