@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { from, asyncScheduler } from 'rxjs';
 import { WeatherServiceService as WeatherService } from '../weather-service.service';
 
 @Component({
