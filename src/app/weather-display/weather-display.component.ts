@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { from, asyncScheduler } from 'rxjs';
 import { WeatherServiceService as WeatherService } from '../weather-service.service';
 
 @Component({
@@ -18,8 +19,15 @@ export class WeatherDisplayComponent implements OnInit {
     this.getWeatherData();
   }
 
+  // getWeatherData() {
+  //   this.weatherService.getCurrentDayWeather().subscribe(data => {
+  //     console.log(data);
+  //     this.weather = data;
+  //   });
+  // }
+
   getWeatherData() {
-    this.weatherService.getCurrentDayWeather().subscribe(data => {
+    this.weatherService.getCurrentDayWeather().then(data => {
       console.log(data);
       this.weather = data;
     });
