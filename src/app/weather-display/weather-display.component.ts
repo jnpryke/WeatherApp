@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherServiceService as WeatherService } from '../weather-service.service';
+import { WeatherService } from '../weather.service';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { getTodaysForecast } from '../actions/get-forecast.actions';
 
 @Component({
   selector: 'app-weather-display',
@@ -7,21 +10,23 @@ import { WeatherServiceService as WeatherService } from '../weather-service.serv
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
-  weather;
+  weather$: Observable<any>;
 
-  constructor(
-    private weatherService: WeatherService
-  ) { }
+  constructor(private store: Store<{ weatherForecast: any }>) {
+      this.weather$ = store.pipe(select('weatherForecast'));
+    }
 
   ngOnInit() {
     this.getWeatherData();
   }
 
   getWeatherData() {
-    this.weatherService.getCurrentDayWeather().then(data => {
-      console.log(data);
-      this.weather = data;
-    });
+    // this.weatherService.getCurrentDayWeather().then(data => {
+    //   console.log(data);
+    //   this.weather = data;
+    // });
+    console.log('dispatch');
+    this.store.dispatch(getTodaysForecast());
   }
 
   convertToFarenheit(tempKelvin) {

@@ -1,4 +1,4 @@
-<h1>Today's Weather Forecast</h1>
+<!-- <h1>Today's Weather Forecast</h1>
 
 <div class="weather-item" *ngIf="weather">
   <span>Location: {{ weather.name }}</span>
@@ -10,4 +10,7 @@
 
 <div class="weather-item" *ngIf="weather">
   <span>Temperature: {{ convertToFarenheit(weather.main.temp) }} &#8457;</span>
-</div>
+</div> -->
+
+
+<div>Current Count: {{ weather$ | async }}</div>

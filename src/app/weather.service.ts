@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherServiceService {
+export class WeatherService {
 
   constructor(
     private http: HttpClient
@@ -35,6 +35,7 @@ export class WeatherServiceService {
   }
 
   getTempForecast() {
+    console.log('are you being called')
     return this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + 41.2 +
       '&lon=' + -85.6 + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a');

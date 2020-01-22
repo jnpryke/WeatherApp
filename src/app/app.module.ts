@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { EffectsModule } from '@ngrx/effects';
+import { WeatherEffects } from './effects/weather.effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -21,6 +23,7 @@ import { WeatherDisplayComponent } from './weather-display/weather-display.compo
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    EffectsModule.forFeature([WeatherEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
