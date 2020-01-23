@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../../weather.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { getTodaysForecast } from '../actions/get-forecast.actions';
+import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
 
 @Component({
   selector: 'app-weather-display',
