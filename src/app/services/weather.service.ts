@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { apiKey } from '../../environments/api_key';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class WeatherService {
 
     return await this.http.get(
       'https://api.openweathermap.org/data/2.5/weather?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
+      '&lon=' + location.coords.longitude + '&APPID=' + apiKey)
       .toPromise();
   }
 
@@ -24,7 +25,7 @@ export class WeatherService {
 
     return await this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a')
+      '&lon=' + location.coords.longitude + '&APPID=' + apiKey)
       .toPromise();
   }
 
@@ -38,6 +39,6 @@ export class WeatherService {
     console.log('are you being called');
     return this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + 41.2 +
-      '&lon=' + -85.6 + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a');
+      '&lon=' + -85.6 + '&APPID=' + apiKey);
   }
 }
