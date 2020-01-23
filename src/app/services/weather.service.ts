@@ -16,7 +16,7 @@ export class WeatherService {
 
     return await this.http.get(
       'https://api.openweathermap.org/data/2.5/weather?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=' + apiKey)
+      '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
       .toPromise();
   }
 
@@ -25,7 +25,7 @@ export class WeatherService {
 
     return await this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=' + apiKey)
+      '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
       .toPromise();
   }
 
@@ -39,6 +39,6 @@ export class WeatherService {
     console.log('are you being called');
     return this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + 41.2 +
-      '&lon=' + -85.6 + '&APPID=' + apiKey);
+      '&lon=' + -85.6 + '&APPID=' + apiKey.key);
   }
 }
