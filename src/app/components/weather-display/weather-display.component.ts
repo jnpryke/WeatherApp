@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../weather.service';
+import { WeatherService } from '../../services/weather.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
