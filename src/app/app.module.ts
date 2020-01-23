@@ -23,14 +23,14 @@ import { WeatherDisplayComponent } from './components/weather-display/weather-di
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    EffectsModule.forFeature([WeatherEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    EffectsModule.forRoot([WeatherEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
