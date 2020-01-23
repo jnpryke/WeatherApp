@@ -2,7 +2,7 @@ import { getTodaysForecast, getFivedayForecast } from '../actions/get-forecast.a
 import { createReducer, on, Action } from '@ngrx/store';
 
 export interface WeatherState {
-    weatherForecast: any;
+    weatherForecast?: string;
 }
 
 const initialState: WeatherState = {

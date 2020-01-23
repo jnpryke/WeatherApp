@@ -7,18 +7,17 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import * as fromWeather from './weather.reducer';
-import { EffectsModule } from '@ngrx/effects';
 
-export interface State {
+export interface AppState {
   weatherForecast: fromWeather.WeatherState;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<AppState> = {
   weatherForecast: fromWeather.reducer,
 };
 
 // console.log all actions
-export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
+export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return (state, action) => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
@@ -31,8 +30,13 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
   };
 }
 
-
-
-export const metaReducers: MetaReducer<State>[] = !environment.production
+export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? [logger]
   : [];
+
+export const selectFeature = (state: AppState) => state.weatherForecast;
+
+export const selectFeatureWeather = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherForecast
+);
