@@ -1,0 +1,18 @@
+plans for app:
+
+display actual weather data from store
+display a loading state
+make buttons actually do the forecast
+display weather icons based on condition
+show a card view for each weather update
+move buttons from top bar
+make the effect work with getting the browser geolocation data
+
+*****************************************************
+
+for now lets just mess with the state. I should also decide which data I want from the weather data. I should probabaly
+make an object for which data I want.
+
+
+
+

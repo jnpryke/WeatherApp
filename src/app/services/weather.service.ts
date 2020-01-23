@@ -35,7 +35,7 @@ export class WeatherService {
   }
 
   getTempForecast() {
-    console.log('are you being called')
+    console.log('are you being called');
     return this.http.get(
       'https://api.openweathermap.org/data/2.5/forecast?lat=' + 41.2 +
       '&lon=' + -85.6 + '&APPID=b7c221fb8a2b47d36d40adcbcdbb671a');
