@@ -11,13 +11,19 @@ import { WeatherState } from '../../store/reducers/weather.reducer';
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
-  public weatherMainDescription$: Observable<string>;
+  weatherMainDescription$: Observable<string>;
   weatherDescription$: Observable<string>;
+  weatherTemp$: Observable<number>;
+  weatherTempMin$: Observable<number>;
+  weatherTempMax$: Observable<number>;
   weatherLocation$: Observable<string>;
 
   constructor(private store: Store<fromRoot.AppState>) {
     this.weatherMainDescription$ = this.store.pipe(select(fromRoot.selectWeatherMainDescription));
     this.weatherDescription$ = this.store.pipe(select(fromRoot.selectWeatherDescription));
+    this.weatherTemp$ = this.store.pipe(select(fromRoot.selectWeatherTemp));
+    this.weatherTempMin$ = this.store.pipe(select(fromRoot.selectWeatherTempMin));
+    this.weatherTempMax$ = this.store.pipe(select(fromRoot.selectWeatherTempMax));
     this.weatherLocation$ = this.store.pipe(select(fromRoot.selectWeatherLocation));
   }
 
@@ -27,9 +33,5 @@ export class WeatherDisplayComponent implements OnInit {
 
   getWeatherData() {
     this.store.dispatch(getTodaysForecast());
-  }
-
-  convertToFarenheit(tempKelvin) {
-    return Math.round(tempKelvin * (9 / 5) - 459.67);
   }
 }

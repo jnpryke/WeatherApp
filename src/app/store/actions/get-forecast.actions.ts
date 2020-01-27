@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 export const getTodaysForecast = createAction(
   '[Forecast] Today'

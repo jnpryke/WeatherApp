@@ -39,7 +39,7 @@ export class WeatherService {
 
   getTempForecast() {
     return this.http.get<string>(
-      this.weatherUrl + '?lat=' + 41.2 +
-      '&lon=' + -85.6 + '&APPID=' + apiKey.key);
+      this.weatherUrl + '?lat=' + 41.24 +
+      '&lon=' + -85.85 + '&APPID=' + apiKey.key);
   }
 }

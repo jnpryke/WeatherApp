@@ -5,9 +5,9 @@
     <img class="weather-card-img" mat-card-image src="assets/img/rain.png" />
     <mat-card-content class="weather-description">
       <div>Description: {{ weatherMainDescription }}</div>
-      <div>Temperature: 38 F</div>
-      <div>Temperature High: 41 F</div>
-      <div>Temperature Low: 36 F</div>
-      <div>Location: Kosciuosko</div>
+      <div>Temperature: {{ convertToFarenheit(weatherTemp) }} &#8457;</div>
+      <div>Temperature High: {{ convertToFarenheit(weatherTempMax) }} &#8457;</div>
+      <div>Temperature Low: {{ convertToFarenheit(weatherTempMin) }} &#8457;</div>
+      <div>Location: {{ weatherLocation }} </div>
     </mat-card-content>
   </mat-card>

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 import { Input } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather-card',
@@ -8,15 +7,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
-  // @Input() public weatherMainDescription: Observable<string>;
-  @Input() public weatherMainDescription;
+  @Input() weatherMainDescription;
   @Input() weatherDescription;
+  @Input() weatherTemp;
+  @Input() weatherTempMin;
+  @Input() weatherTempMax;
   @Input() weatherLocation;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    // this.weatherMainDescription.subscribe(data => data)
+  ngOnInit() {}
+
+  convertToFarenheit(tempKelvin) {
+    return Math.round(tempKelvin * (9 / 5) - 459.67);
   }
-
 }

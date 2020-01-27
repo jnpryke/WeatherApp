@@ -46,6 +46,21 @@ export const selectWeatherDescription = createSelector(
   (state: fromWeather.WeatherState) => state.weatherDescription
 );
 
+export const selectWeatherTemp = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherTemp
+);
+
+export const selectWeatherTempMax = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherTempMax
+);
+
+export const selectWeatherTempMin = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherTempMin
+);
+
 export const selectWeatherLocation = createSelector(
   selectFeature,
   (state: fromWeather.WeatherState) => state.weatherLocationName
