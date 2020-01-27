@@ -1,6 +1,5 @@
-import { getTodaysForecast, getFivedayForecast } from '../actions/get-forecast.actions';
 import { createReducer, on, Action } from '@ngrx/store';
-import * as actions from '../actions/get-forecast.actions'
+import * as actions from '../actions/get-forecast.actions';
 
 export interface WeatherState {
     weatherForecast?: string;

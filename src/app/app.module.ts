@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { EffectsModule } from '@ngrx/effects';
 import { WeatherEffects } from './store/effects/weather.effects';
@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 import { WeatherDisplayComponent } from './components/weather-display/weather-display.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
-import { MaterialModule } from './material-module'
+import { MaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
@@ -41,4 +41,5 @@ import { MaterialModule } from './material-module'
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
