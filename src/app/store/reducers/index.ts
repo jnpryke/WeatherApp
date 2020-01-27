@@ -36,7 +36,17 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production
 
 export const selectFeature = (state: AppState) => state.weatherForecast;
 
-export const selectFeatureWeather = createSelector(
+export const selectWeatherMainDescription = createSelector(
   selectFeature,
-  (state: fromWeather.WeatherState) => state.weatherForecast
+  (state: fromWeather.WeatherState) => state.weatherMainDescription
+);
+
+export const selectWeatherDescription = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherDescription
+);
+
+export const selectWeatherLocation = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherLocationName
 );

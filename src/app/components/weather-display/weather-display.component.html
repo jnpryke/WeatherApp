@@ -1,16 +1,9 @@
-<!-- <h1>Today's Weather Forecast</h1>
-
-<div class="weather-item" *ngIf="weather">
-  <span>Location: {{ weather.name }}</span>
+<div class="container">
+  <div class="flex-container" fxLayout="row" fxFlexAlign="center" *ngIf="weatherMainDescription$ | async" >
+    <ng-container *ngFor="let number of [0,1,2,3,4]" class="ng-container">
+      <app-weather-card [weatherMainDescription]="weatherMainDescription$"></app-weather-card>
+    </ng-container>
+  </div>
 </div>
 
-<div class="weather-item" *ngIf="weather">
-    <span>Weather Description: {{ weather.weather[0].description }}</span>
-</div>
-
-<div class="weather-item" *ngIf="weather">
-  <span>Temperature: {{ convertToFarenheit(weather.main.temp) }} &#8457;</span>
-</div> -->
-
-
-<div>Weather: {{ weather$ | async }}</div>
+<!-- <div>Weather: {{ weatherMainDescription$ | async }}</div> -->

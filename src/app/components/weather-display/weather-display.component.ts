@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
 import * as fromRoot from '../../store/reducers/index';
+import { WeatherState } from '../../store/reducers/weather.reducer';
 
 @Component({
   selector: 'app-weather-display',
@@ -10,10 +11,14 @@ import * as fromRoot from '../../store/reducers/index';
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
-  weather$: Observable<any>;
+  public weatherMainDescription$: Observable<string>;
+  weatherDescription$: Observable<string>;
+  weatherLocation$: Observable<string>;
 
   constructor(private store: Store<fromRoot.AppState>) {
-    this.weather$ = this.store.pipe(select(fromRoot.selectFeatureWeather));
+    this.weatherMainDescription$ = this.store.pipe(select(fromRoot.selectWeatherMainDescription));
+    this.weatherDescription$ = this.store.pipe(select(fromRoot.selectWeatherDescription));
+    this.weatherLocation$ = this.store.pipe(select(fromRoot.selectWeatherLocation));
   }
 
   ngOnInit() {
@@ -21,7 +26,6 @@ export class WeatherDisplayComponent implements OnInit {
   }
 
   getWeatherData() {
-    console.log('dispatch');
     this.store.dispatch(getTodaysForecast());
   }
 
