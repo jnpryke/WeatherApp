@@ -21,4 +21,25 @@ export class WeatherCardComponent implements OnInit {
   convertToFarenheit(tempKelvin) {
     return Math.round(tempKelvin * (9 / 5) - 459.67);
   }
+
+  getWeatherIconPath(weatherDescription) {
+    weatherDescription = weatherDescription.toLowerCase();
+    let path = 'assets/img/';
+
+    console.log(weatherDescription);
+
+    if (weatherDescription.includes('cloud')) {
+      path += 'cloud.png';
+    } else if (weatherDescription.includes('rain')) {
+      path += 'rain.png';
+    } else if (weatherDescription.includes('snow')) {
+      path += 'snowflake.png';
+    } else if (weatherDescription.includes('wind')) {
+      path += 'wind.png';
+    } else {
+      path += 'sun.png';
+    }
+
+    return path;
+  }
 }
