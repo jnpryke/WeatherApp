@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { apiKey } from '../../environments/api_key';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
+  weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
   constructor(
     private http: HttpClient
@@ -15,7 +17,7 @@ export class WeatherService {
     const location = await this.getCurrentPosition();
 
     return await this.http.get(
-      'https://api.openweathermap.org/data/2.5/weather?lat=' + location.coords.latitude +
+      this.weatherUrl + '?lat=' + location.coords.latitude +
       '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
       .toPromise();
   }
@@ -24,7 +26,7 @@ export class WeatherService {
     const location = await this.getCurrentPosition();
 
     return await this.http.get(
-      'https://api.openweathermap.org/data/2.5/forecast?lat=' + location.coords.latitude +
+      this.weatherUrl + '?lat=' + location.coords.latitude +
       '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
       .toPromise();
   }
@@ -36,9 +38,8 @@ export class WeatherService {
   }
 
   getTempForecast() {
-    console.log('are you being called');
-    return this.http.get(
-      'https://api.openweathermap.org/data/2.5/forecast?lat=' + 41.2 +
-      '&lon=' + -85.6 + '&APPID=' + apiKey.key);
+    return this.http.get<string>(
+      this.weatherUrl + '?lat=' + 41.24 +
+      '&lon=' + -85.85 + '&APPID=' + apiKey.key);
   }
 }

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
 import * as fromRoot from '../../store/reducers/index';
+import { WeatherState } from '../../store/reducers/weather.reducer';
 
 @Component({
   selector: 'app-weather-display',
@@ -10,10 +11,20 @@ import * as fromRoot from '../../store/reducers/index';
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
-  weather$: Observable<any>;
+  weatherMainDescription$: Observable<string>;
+  weatherDescription$: Observable<string>;
+  weatherTemp$: Observable<number>;
+  weatherTempMin$: Observable<number>;
+  weatherTempMax$: Observable<number>;
+  weatherLocation$: Observable<string>;
 
   constructor(private store: Store<fromRoot.AppState>) {
-    this.weather$ = this.store.pipe(select(fromRoot.selectFeatureWeather));
+    this.weatherMainDescription$ = this.store.pipe(select(fromRoot.selectWeatherMainDescription));
+    this.weatherDescription$ = this.store.pipe(select(fromRoot.selectWeatherDescription));
+    this.weatherTemp$ = this.store.pipe(select(fromRoot.selectWeatherTemp));
+    this.weatherTempMin$ = this.store.pipe(select(fromRoot.selectWeatherTempMin));
+    this.weatherTempMax$ = this.store.pipe(select(fromRoot.selectWeatherTempMax));
+    this.weatherLocation$ = this.store.pipe(select(fromRoot.selectWeatherLocation));
   }
 
   ngOnInit() {
@@ -21,11 +32,6 @@ export class WeatherDisplayComponent implements OnInit {
   }
 
   getWeatherData() {
-    console.log('dispatch');
     this.store.dispatch(getTodaysForecast());
-  }
-
-  convertToFarenheit(tempKelvin) {
-    return Math.round(tempKelvin * (9 / 5) - 459.67);
   }
 }
