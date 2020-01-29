@@ -4,9 +4,8 @@ display a loading state
 make buttons actually do the forecast
 move buttons from top bar
 get browser geolocation data for weather query
-format cards
 5 day forecast (refactor the store)
-have end to end testing kharma
+have end to end testing karma
 add theming
 
 *****************************************************
