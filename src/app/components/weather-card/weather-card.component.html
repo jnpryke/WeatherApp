@@ -2,9 +2,8 @@
     <mat-card-header class="weather-card-header">
       <mat-card-title>Today's Forecast</mat-card-title>
     </mat-card-header>
-    <!-- <img class="weather-card-img" mat-card-image src="assets/img/cloud.png" /> -->
     <img class="weather-card-img" mat-card-image src="{{ getWeatherIconPath(weatherMainDescription) }}" />
-    <mat-card-content class="weather-description">
+    <mat-card-content class="weather-card-content">
       <div>Description: {{ weatherMainDescription }}</div>
       <div>Temperature: {{ convertToFarenheit(weatherTemp) }} &#8457;</div>
       <div>Temperature High: {{ convertToFarenheit(weatherTempMax) }} &#8457;</div>

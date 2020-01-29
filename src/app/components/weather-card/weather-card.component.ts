@@ -26,11 +26,9 @@ export class WeatherCardComponent implements OnInit {
     weatherDescription = weatherDescription.toLowerCase();
     let path = 'assets/img/';
 
-    console.log(weatherDescription);
-
     if (weatherDescription.includes('cloud')) {
       path += 'cloud.png';
-    } else if (weatherDescription.includes('rain')) {
+    } else if (weatherDescription.includes('rain') || weatherDescription.includes('mist')) {
       path += 'rain.png';
     } else if (weatherDescription.includes('snow')) {
       path += 'snowflake.png';
