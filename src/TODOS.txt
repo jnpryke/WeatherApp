@@ -2,10 +2,13 @@ plans for app:
 
 display a loading state
 make buttons actually do the forecast
-move buttons from top bar
+buttons format them to the side top bar
 get browser geolocation data for weather query
 5 day forecast (refactor the store)
 have end to end testing karma
 add theming
+connect btn to ngrx Celcius to/from fahrenheit
 
 *****************************************************
+
+lets format the buttons to the side and
