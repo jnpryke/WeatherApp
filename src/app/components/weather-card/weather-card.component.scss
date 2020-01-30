@@ -1,3 +1,5 @@
+@import "src/app/_variables.scss";
+
 .weather-card {
     max-width: 250px;
     display: flex;
@@ -8,8 +10,7 @@
 }
 
 .weather-card-header {
-    background-color: #1976d2;
-    // background-color: blue;
+    background-color: $primary;
     width: 100%;
     margin-bottom: 1em;
     display: flex;

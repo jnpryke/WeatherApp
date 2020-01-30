@@ -4,7 +4,7 @@
     </mat-card-header>
     <img class="weather-card-img" mat-card-image src="{{ getWeatherIconPath(weatherMainDescription) }}" />
     <mat-card-content class="weather-card-content">
-      <div>Description: {{ weatherDescription }}</div>
+      <div>Description: {{ capitalizeEachWord(weatherDescription) }}</div>
       <div>Temperature: {{ convertToFarenheit(weatherTemp) }} &#8457;</div>
       <div>Temperature High: {{ convertToFarenheit(weatherTempMax) }} &#8457;</div>
       <div>Temperature Low: {{ convertToFarenheit(weatherTempMin) }} &#8457;</div>
