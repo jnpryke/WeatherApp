@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="flex-container" fxLayout="row" fxFlexAlign="center" *ngIf="weatherMainDescription$ | async" >
+  <div class="flex-container" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="weatherMainDescription$ | async" >
     <ng-container *ngFor="let number of [0,1,2,3,4]" class="ng-container">
         <app-weather-card
           [weatherMainDescription]="weatherMainDescription$ | async"

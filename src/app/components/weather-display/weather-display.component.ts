@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
 import * as fromRoot from '../../store/reducers/index';
-import { WeatherState } from '../../store/reducers/weather.reducer';
 
 @Component({
   selector: 'app-weather-display',

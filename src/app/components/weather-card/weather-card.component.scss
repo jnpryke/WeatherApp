@@ -1,24 +1,30 @@
+@import "src/app/_variables.scss";
+
 .weather-card {
-    max-width: 200px;
+    max-width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin: 1em;
 }
-  
+
 .weather-card-header {
-    background-color: #1976d2;
+    background-color: $primary;
     width: 100%;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #ffffff;
+    padding: 1em;
 }
 
 .weather-card-img {
     width: 80%;
 }
 
-.weather-description {
+.weather-card-content {
     color: black;
+    font-size: 1em;
 }

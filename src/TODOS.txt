@@ -1,18 +1,15 @@
 plans for app:
 
-display actual weather data from store
 display a loading state
 make buttons actually do the forecast
-display weather icons based on condition
-show a card view for each weather update
-move buttons from top bar
-make the effect work with getting the browser geolocation data
+get browser geolocation data for weather query
+5 day forecast (refactor the store)
+have end to end testing karma
+add theming
+connect btn to ngrx Celcius to/from fahrenheit
+refactor top bar to use angular material
+move location to the top bar
 
 *****************************************************
 
-for now lets just mess with the state. I should also decide which data I want from the weather data. I should probabaly
-make an object for which data I want.
-
-
-
-
+lets format the buttons to the side and

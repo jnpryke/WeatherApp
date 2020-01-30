@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
@@ -26,11 +26,9 @@ export class WeatherCardComponent implements OnInit {
     weatherDescription = weatherDescription.toLowerCase();
     let path = 'assets/img/';
 
-    console.log(weatherDescription);
-
     if (weatherDescription.includes('cloud')) {
       path += 'cloud.png';
-    } else if (weatherDescription.includes('rain')) {
+    } else if (weatherDescription.includes('rain') || weatherDescription.includes('mist')) {
       path += 'rain.png';
     } else if (weatherDescription.includes('snow')) {
       path += 'snowflake.png';
@@ -41,5 +39,12 @@ export class WeatherCardComponent implements OnInit {
     }
 
     return path;
+  }
+
+  capitalizeEachWord(words) {
+    return words.toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
   }
 }
