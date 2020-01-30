@@ -14,6 +14,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { WeatherDisplayComponent } from './components/weather-display/weather-display.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 import { MaterialModule } from './material-module';
+import { StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MaterialModule } from './material-module';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    StorageServiceModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

@@ -5,7 +5,8 @@
   </a>
 
   <span class="spacer"></span>
-  <button mat-raised-button color="accent">&#8451;</button>
+  <!-- <button mat-raised-button color="accent">  {{" '&#' + getTemperatureChar() + ';'" }}</button> -->
+  <button mat-raised-button color="accent" (click)="changeTemperatureUnit()" [innerHTML]="temperature"></button>
   <button mat-raised-button color="accent"><i class="material-icons">wb_sunny</i> Today's forecast</button>
   <button mat-raised-button color="accent"><i class="material-icons">wb_cloudy</i> 5 Day forecast</button>
 </mat-toolbar>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
 import * as fromRoot from '../../store/reducers/index';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-weather-display',
@@ -10,6 +11,8 @@ import * as fromRoot from '../../store/reducers/index';
   styleUrls: ['./weather-display.component.scss']
 })
 export class WeatherDisplayComponent implements OnInit {
+  temperatureKey = 'temperature';
+  public data: any = [];
   weatherMainDescription$: Observable<string>;
   weatherDescription$: Observable<string>;
   weatherTemp$: Observable<number>;
@@ -17,7 +20,7 @@ export class WeatherDisplayComponent implements OnInit {
   weatherTempMax$: Observable<number>;
   weatherLocation$: Observable<string>;
 
-  constructor(private store: Store<fromRoot.AppState>) {
+  constructor(private store: Store<fromRoot.AppState>, @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
     this.weatherMainDescription$ = this.store.pipe(select(fromRoot.selectWeatherMainDescription));
     this.weatherDescription$ = this.store.pipe(select(fromRoot.selectWeatherDescription));
     this.weatherTemp$ = this.store.pipe(select(fromRoot.selectWeatherTemp));

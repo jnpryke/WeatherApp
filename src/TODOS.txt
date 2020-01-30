@@ -5,11 +5,10 @@ make buttons actually do the forecast
 get browser geolocation data for weather query
 5 day forecast (refactor the store)
 have end to end testing karma
-add theming
-connect btn to ngrx Celcius to/from fahrenheit
-refactor top bar to use angular material
-move location to the top bar
+connect btn to ngrx Celcius to/from fahrenheit (lets do this one, lets save the state of the selection in the browser)
+move weather location name to the top bar
 
 *****************************************************
 
-lets format the buttons to the side and
+lets save a default value then let the user update the value from the button press. Well I think I will have to use the emitter to
+emit from the top bar to effect the change

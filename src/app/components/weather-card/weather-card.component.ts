@@ -22,6 +22,10 @@ export class WeatherCardComponent implements OnInit {
     return Math.round(tempKelvin * (9 / 5) - 459.67);
   }
 
+  convertToCelsius(tempKelvin) {
+    return Math.round(tempKelvin - 273.15);
+  }
+
   getWeatherIconPath(weatherDescription) {
     weatherDescription = weatherDescription.toLowerCase();
     let path = 'assets/img/';
