@@ -7,6 +7,8 @@ get browser geolocation data for weather query
 have end to end testing karma
 connect btn to ngrx Celcius to/from fahrenheit (lets do this one, lets save the state of the selection in the browser)
 move weather location name to the top bar
+incorporate travis cl
+Use meta reducers to get get temperature value
 
 *****************************************************
 
