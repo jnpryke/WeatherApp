@@ -17,8 +17,8 @@ export class WeatherService {
     const location = await this.getCurrentPosition();
 
     return await this.http.get(
-      this.weatherUrl + '?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
+      this.weatherUrl + '?lat=' + (location.coords.latitude + 10) +
+      '&lon=' + (location.coords.longitude  + 10) + '&APPID=' + apiKey.key)
       .toPromise();
   }
 
@@ -26,8 +26,8 @@ export class WeatherService {
     const location = await this.getCurrentPosition();
 
     return await this.http.get(
-      this.weatherUrl + '?lat=' + location.coords.latitude +
-      '&lon=' + location.coords.longitude + '&APPID=' + apiKey.key)
+      this.weatherUrl + '?lat=' + (location.coords.latitude + 10) +
+      '&lon=' + (location.coords.longitude  + 10) + '&APPID=' + apiKey.key)
       .toPromise();
   }
 
@@ -39,7 +39,7 @@ export class WeatherService {
 
   getTempForecast() {
     return this.http.get<string>(
-      this.weatherUrl + '?lat=' + 41.24 +
-      '&lon=' + -85.85 + '&APPID=' + apiKey.key);
+      this.weatherUrl + '?lat=' + (41.24 + 10) +
+      '&lon=' + (-85.85 + 10) + '&APPID=' + apiKey.key);
   }
 }
