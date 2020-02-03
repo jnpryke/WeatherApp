@@ -7,6 +7,7 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import * as fromWeather from './weather.reducer';
+import { storageMetaReducer } from '../meta-reducers/local-storage.meta-reducer';
 
 export interface AppState {
   weatherForecast: fromWeather.WeatherState;
@@ -31,7 +32,7 @@ export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
-  ? [logger]
+  ? [logger, storageMetaReducer]
   : [];
 
 export const selectFeature = (state: AppState) => state.weatherForecast;
