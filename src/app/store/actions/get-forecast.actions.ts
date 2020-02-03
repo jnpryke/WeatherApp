@@ -17,3 +17,15 @@ export const getTodaysForecastFailure = createAction(
 export const getFivedayForecast = createAction(
   '[Forecast] 5-Day'
 );
+
+export const getRecomendedAttire = createAction(
+  '[Attire] Today'
+);
+
+export const getRecomendedAttireSuccess = createAction(
+  '[Attire] Today Yay!'
+);
+
+export const getRecomendedAttireFailure = createAction(
+  '[Attire] Today Nay!'
+);

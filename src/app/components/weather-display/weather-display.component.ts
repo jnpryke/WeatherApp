@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { getTodaysForecast } from '../../store/actions/get-forecast.actions';
+import { getTodaysForecast, getRecomendedAttire } from '../../store/actions/get-forecast.actions';
 import * as fromRoot from '../../store/reducers/index';
 
 @Component({
@@ -16,6 +16,7 @@ export class WeatherDisplayComponent implements OnInit {
   weatherTempMin$: Observable<number>;
   weatherTempMax$: Observable<number>;
   weatherLocation$: Observable<string>;
+  weatherAttire$: Observable<string>;
 
   constructor(private store: Store<fromRoot.AppState>) {
     this.weatherMainDescription$ = this.store.pipe(select(fromRoot.selectWeatherMainDescription));
@@ -24,6 +25,7 @@ export class WeatherDisplayComponent implements OnInit {
     this.weatherTempMin$ = this.store.pipe(select(fromRoot.selectWeatherTempMin));
     this.weatherTempMax$ = this.store.pipe(select(fromRoot.selectWeatherTempMax));
     this.weatherLocation$ = this.store.pipe(select(fromRoot.selectWeatherLocation));
+    this.weatherAttire$ = this.store.pipe(select(fromRoot.selectWeatherAttire));
   }
 
   ngOnInit() {
@@ -32,5 +34,6 @@ export class WeatherDisplayComponent implements OnInit {
 
   getWeatherData() {
     this.store.dispatch(getTodaysForecast());
+    this.store.dispatch(getRecomendedAttire());
   }
 }

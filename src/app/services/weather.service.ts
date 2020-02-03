@@ -42,4 +42,9 @@ export class WeatherService {
       this.weatherUrl + '?lat=' + (41.24 + 10) +
       '&lon=' + (-85.85 + 10) + '&APPID=' + apiKey.key);
   }
+
+  getRecomendedAttire() {
+
+    return this.http.get<string>("COAT");
+  }
 }

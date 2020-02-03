@@ -21,6 +21,7 @@ export class WeatherCardComponent implements OnInit {
   @Input() weatherTempMin;
   @Input() weatherTempMax;
   @Input() weatherLocation;
+  @Input() weatherAttire;
 
   constructor(
     private modalService: ModalService,

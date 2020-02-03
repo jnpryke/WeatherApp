@@ -23,3 +23,23 @@ export class WeatherEffects {
     private weatherService: WeatherService
   ) { }
 }
+
+
+@Injectable()
+export class AttireEffects {
+
+  loadAttire$ = createEffect(() => this.actions$.pipe(
+    ofType('[Attire] Today'),
+    mergeMap(() => this.weatherService.getRecomendedAttire()
+      .pipe(
+        map(string => actions.getRecomendedAttireSuccess()),
+        catchError(error => of(actions.getRecomendedAttireFailure()))
+      ))
+  )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private weatherService: WeatherService
+  ) { }
+}

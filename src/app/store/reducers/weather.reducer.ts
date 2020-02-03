@@ -9,6 +9,7 @@ export interface WeatherState {
     weatherTempMin?: number;
     weatherTempMax?: number;
     weatherLocationName?: string;
+    weatherAttire?: string;
 }
 
 const initialState: WeatherState = {
@@ -19,6 +20,7 @@ const initialState: WeatherState = {
     weatherTempMin: undefined,
     weatherTempMax: undefined,
     weatherLocationName: undefined,
+    weatherAttire: undefined,
 };
 
 const weatherForecastReducer = createReducer(initialState,
@@ -31,6 +33,7 @@ const weatherForecastReducer = createReducer(initialState,
             weatherTempMin: payload.weather.main.temp_min,
             weatherTempMax: payload.weather.main.temp_max,
             weatherLocationName: payload.weather.name,
+            weatherAttire: "COAT",
         }
     )),
 );
@@ -38,5 +41,3 @@ const weatherForecastReducer = createReducer(initialState,
 export function reducer(state: WeatherState | undefined, action: Action) {
     return weatherForecastReducer(state, action);
 }
-
-export const selectForecast = (state: WeatherState) => state;

@@ -65,3 +65,8 @@ export const selectWeatherLocation = createSelector(
   selectFeature,
   (state: fromWeather.WeatherState) => state.weatherLocationName
 );
+
+export const selectWeatherAttire = createSelector(
+  selectFeature,
+  (state: fromWeather.WeatherState) => state.weatherAttire
+);
