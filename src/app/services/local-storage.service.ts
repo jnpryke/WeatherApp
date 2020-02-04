@@ -13,7 +13,7 @@ export class LocalStorageService {
     return this.storage.get(temperatureKey.key);
   }
 
-  setTemperatureUnitState(value) {
-    this.storage.set(temperatureKey.key, value);
+  setTemperatureUnitState(tempUnit) {
+    this.storage.set(temperatureKey.key, tempUnit);
   }
 }

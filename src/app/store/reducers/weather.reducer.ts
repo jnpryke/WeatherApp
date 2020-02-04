@@ -38,5 +38,3 @@ const weatherForecastReducer = createReducer(initialState,
 export function reducer(state: WeatherState | undefined, action: Action) {
     return weatherForecastReducer(state, action);
 }
-
-export const selectForecast = (state: WeatherState) => state;
