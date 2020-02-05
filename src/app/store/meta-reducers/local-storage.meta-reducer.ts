@@ -13,9 +13,9 @@ export function storageMetaReducer<S, A extends Action =
       if (onInit) {
         console.log('primera vez');
         onInit = false;
-        // const savedState = storageService.getSavedState(localStorageKey);s
-        // return merge(nextState, savedState);
-        return nextState;
+        const savedState = storageService.getTemperatureUnitState();
+        return merge(nextState, savedState);
+        // return nextState;
       }
 
       // save the next state to the application storage.

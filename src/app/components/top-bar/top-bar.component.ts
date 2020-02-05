@@ -11,28 +11,29 @@ export class TopBarComponent implements OnInit {
   temperature;
   icon = '&#' + 8451 + ';';
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
+  // constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
+  constructor() {}
 
   ngOnInit() {
-    this.getTemperatureFromLocalStorage();
+    // this.getTemperatureFromLocalStorage();
   }
 
-  getTemperatureFromLocalStorage(): void {
-    this.temperature = this.storage.get(temperatureKey.key);
-    console.log(this.temperature);
-  }
+  // getTemperatureFromLocalStorage(): void {
+  //   this.temperature = this.storage.get(temperatureKey.key);
+  //   console.log(this.temperature);
+  // }
 
-  saveTemperatureToLocalStorage(value) {
-    this.storage.set(temperatureKey.key, value);
-  }
+  // saveTemperatureToLocalStorage(value) {
+  //   this.storage.set(temperatureKey.key, value);
+  // }
 
-  changeTemperatureUnit() {
-    if (this.temperature === '&#8451;') {
-      this.temperature = '&#8457;';
+  // changeTemperatureUnit() {
+  //   if (this.temperature === '&#8451;') {
+  //     this.temperature = '&#8457;';
 
-    } else {
-      this.temperature = '&#8451;';
-    }
-    this.saveTemperatureToLocalStorage(this.temperature);
-  }
+  //   } else {
+  //     this.temperature = '&#8451;';
+  //   }
+  //   this.saveTemperatureToLocalStorage(this.temperature);
+  // }
 }
