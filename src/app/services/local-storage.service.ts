@@ -1,19 +1,16 @@
-import { Injectable, Inject } from '@angular/core';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import { temperatureKey } from '../../environments/local_storage_keys';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
+  constructor() {}
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
-
-  getTemperatureUnitState()  {
-    return this.storage.get(temperatureKey.key);
+  setSavedState(localStorageKey: string, state: any): void {
+    localStorage.setItem(localStorageKey, JSON.stringify(state));
   }
 
-  setTemperatureUnitState(tempUnit) {
-    this.storage.set(temperatureKey.key, tempUnit);
+  getSavedState(localStorageKey: string): any {
+    return JSON.parse(localStorage.getItem(localStorageKey));
   }
 }

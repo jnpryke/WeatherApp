@@ -49,8 +49,8 @@ export function getMetaReducers(saveKeys: string[], localStorageKey: string, sto
     EffectsModule.forRoot([WeatherEffects]),
   ],
   providers: [
-    { provide: ROOT_STORAGE_KEYS, useValue: ['layout.theme'], multi: true },
-    { provide: ROOT_LOCAL_STORAGE_KEY, useValue: '__app_storage__', multi: true },
+    { provide: ROOT_STORAGE_KEYS, useValue: ['tempUnit.tempUnit']},
+    { provide: ROOT_LOCAL_STORAGE_KEY, useValue: '__app_storage__'},
     {
       provide: META_REDUCERS,
       deps: [ROOT_STORAGE_KEYS, ROOT_LOCAL_STORAGE_KEY, LocalStorageService],

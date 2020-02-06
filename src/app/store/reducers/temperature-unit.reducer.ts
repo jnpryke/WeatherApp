@@ -6,13 +6,13 @@ export interface TemperatureUnitState {
 }
 
 const initialState: TemperatureUnitState = {
-  tempUnit: undefined,
+  tempUnit: '&#8451;',
 };
 
 const temperatureUnitReducer = createReducer(initialState,
-    on(actions.getTemperatureUnitSuccess, (state, payload) => (
+    on(actions.getTemperature, (state, payload) => (
         {
-          tempUnit: 'stuff',
+          tempUnit: 'celsius',
         }
     )),
 );

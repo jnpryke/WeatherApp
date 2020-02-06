@@ -1,14 +1,12 @@
 import {
   ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
   createSelector,
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import * as fromWeather from './weather.reducer';
-import * as fromTemperature from './temperature-unit.reducer'
-import { storageMetaReducer } from '../meta-reducers/local-storage.meta-reducer';
+import * as fromTemperature from './temperature-unit.reducer';
 
 export interface AppState {
   weatherForecast: fromWeather.WeatherState;
@@ -38,34 +36,40 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? [logger]
   : [];
 
-export const selectFeature = (state: AppState) => state.weatherForecast;
+export const selectFeatureWeather = (state: AppState) => state.weatherForecast;
+export const selectFeatureTemperature = (state: AppState) => state.tempUnit;
 
 export const selectWeatherMainDescription = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherMainDescription
 );
 
 export const selectWeatherDescription = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherDescription
 );
 
 export const selectWeatherTemp = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherTemp
 );
 
 export const selectWeatherTempMax = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherTempMax
 );
 
 export const selectWeatherTempMin = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherTempMin
 );
 
 export const selectWeatherLocation = createSelector(
-  selectFeature,
+  selectFeatureWeather,
   (state: fromWeather.WeatherState) => state.weatherLocationName
+);
+
+export const selectWeatherTemperatureUnit = createSelector(
+  selectFeatureTemperature,
+  (state: fromTemperature.TemperatureUnitState) => state.tempUnit
 );

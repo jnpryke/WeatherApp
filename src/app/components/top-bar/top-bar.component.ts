@@ -1,6 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import { temperatureKey } from '../../../environments/local_storage_keys';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import * as fromRoot from '../../store/reducers/index';
+import { Store, select } from '@ngrx/store';
+import { getTemperature } from '../../store/actions/get-temperature-unit.actions';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,32 +10,23 @@ import { temperatureKey } from '../../../environments/local_storage_keys';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  temperature;
-  icon = '&#' + 8451 + ';';
+  temperatureUnit$: Observable<string>;
 
-  // constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
-  constructor() {}
-
-  ngOnInit() {
-    // this.getTemperatureFromLocalStorage();
+  constructor(private store: Store<fromRoot.AppState>) {
+    this.temperatureUnit$ = this.store.pipe(select(fromRoot.selectWeatherTemperatureUnit));
   }
 
-  // getTemperatureFromLocalStorage(): void {
-  //   this.temperature = this.storage.get(temperatureKey.key);
-  //   console.log(this.temperature);
-  // }
+  ngOnInit() { }
 
-  // saveTemperatureToLocalStorage(value) {
-  //   this.storage.set(temperatureKey.key, value);
-  // }
+  changeTemperatureUnit() {
+    // if (this.temperatureUnit$ === '&#8451;') {
+    //   this.temperature = '&#8457;';
 
-  // changeTemperatureUnit() {
-  //   if (this.temperature === '&#8451;') {
-  //     this.temperature = '&#8457;';
+    // } else {
+    //   this.temperature = '&#8451;';
+    // }
 
-  //   } else {
-  //     this.temperature = '&#8451;';
-  //   }
-  //   this.saveTemperatureToLocalStorage(this.temperature);
-  // }
+    this.store.dispatch(getTemperature());
+    console.log('hola senor');
+  }
 }

@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
 
-export const getTemperatureUnitSuccess = createAction(
+export const getTemperature = createAction(
   '[Temperature] Unit'
 );
